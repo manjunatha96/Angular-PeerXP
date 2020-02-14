@@ -1,0 +1,67 @@
+<div  class="container-fluid">
+    <div>
+      <h1 id="h1D" >Simple</h1>
+    </div>
+  <div id="rcorners1" *ngIf="page==1" >
+    <div id="h1D">
+      <h2>Click next for more information</h2>
+    </div>
+    <div>
+        <button id='btnPlace'   class="btn btn-primary" (click)="nextPage()">Next</button>
+    </div>
+  </div> 
+
+  <div id="rcorners1" *ngIf="page==2" >
+        <div id="h1D">
+          <h2>Enter details and click next</h2>
+        </div>
+        <form [formGroup]="registerForm">
+                <div class="form-row">
+                    <div class="form-group col-6">
+                        <label>First Name</label>
+                        <input type="text" formControlName="first_name" class="form-control" placeholder="Enter First Name"/>
+                    </div>
+                    <div class="form-group col-6">
+                        <label>Last Name</label>
+                        <input type="text" formControlName="last_name" class="form-control" placeholder="Enter Last Name"/>
+                    </div>
+                </div>
+            </form>
+
+        <div>
+            <button id='btnPlace' class="btn btn-primary" (click)="nextPage()" [disabled]="(f.first_name.value.length === 0)">Next</button> 
+            <button id='btnPlace1'   class="btn btn-primary" (click)="backPage()">Back</button>
+        </div>
+      </div> 
+      <div id="rcorners1" *ngIf="page==3" >
+            <div id="h1D">
+              <h2>Deploy user details here.</h2>
+            </div>
+            <form [formGroup]="registerForm">
+                    <div class="form-row">
+                        <div class="form-group col-6">
+                            <label> Email</label><span class="glyphicon glyphicon-info-sign" data-toggle="tooltip" data-placement="top" title="Kindly enter proper email here"></span>
+                            <input type="email" formControlName="email" class="form-control" placeholder="Enter E-mail"/>
+                        </div>
+                        <div class="form-group col-6">
+                            <label> Phone Number</label><small style="font-size: small; font-style: italic; color: gray;"> Optional</small>
+                            <input type="number" formControlName="mobile" class="form-control" placeholder="Enter 10 Digit Number"/>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                      <div class="form-group col-6">
+                          <label>Comments</label><small style="font-size: small; font-style: italic; color: gray;"> will be displayed in your sample data.</small>
+                          <textarea formControlName="message" class="form-control" placeholder="Enter Message" style="height: 120px;" type="text"></textarea>
+                      </div>
+                      <div class="form-group col-6">
+                          <label>Organization </label><small style="font-size: small; font-style: italic; color: gray;"> Optional</small>
+                          <input type="text" formControlName="Organization" class="form-control" placeholder="Enter Organization"/>
+                      </div>
+                  </div>
+                </form>
+            <div>
+                <button id='btnPlace'   class="btn btn-primary" [disabled]="(f.message.value.length === 0 || f.email.value.length === 0)" (click)="onSubmit()">Deploy</button> 
+                <button id='btnPlace1'   class="btn btn-primary" (click)="backPage()">Back</button>
+            </div>
+        </div> 
+</div>
